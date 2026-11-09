@@ -39,9 +39,9 @@
         <script src="js/labels.js"></script>
         <script src="js/leaflet.photon.js"></script>
         <script src="js/leaflet-measure.js"></script>
-        <script src="data/Geologia_107cpg_2.js"></script>
-        <script src="data/Fallas107_3.js"></script>
-        <script src="data/Datos_Estructurales107_4.js"></script>
+        <script src="data/Fallas107_2.js"></script>
+        <script src="data/Datos_Estructurales107_3.js"></script>
+        <script src="data/Area107_4.js"></script>
         <script>
         var highlightLayer;
         function highlightFeature(e) {
@@ -198,197 +198,7 @@
                                               {pane: 'pane_Suceptivilidad_Movimientos_en_Masa_1'});
         bounds_group.addLayer(layer_Suceptivilidad_Movimientos_en_Masa_1);
         map.addLayer(layer_Suceptivilidad_Movimientos_en_Masa_1);
-        function pop_Geologia_107cpg_2(feature, layer) {
-            layer.on({
-                mouseout: function(e) {
-                    if (typeof layer.closePopup == 'function') {
-                        layer.closePopup();
-                    } else {
-                        layer.eachLayer(function(feature){
-                            feature.closePopup()
-                        });
-                    }
-                },
-                mouseover: highlightFeature,
-            });
-            var popupContent = '<table>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['OBJECTID'] !== null ? autolinker.link(String(feature.properties['OBJECTID']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['OBJECTID_1'] !== null ? autolinker.link(String(feature.properties['OBJECTID_1']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['Shape_Leng'] !== null ? autolinker.link(String(feature.properties['Shape_Leng']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['Shape_Area'] !== null ? autolinker.link(String(feature.properties['Shape_Area']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['SimboloUC'] !== null ? autolinker.link(String(feature.properties['SimboloUC']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['Descripcio'] !== null ? autolinker.link(String(feature.properties['Descripcio']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['Edad'] !== null ? autolinker.link(String(feature.properties['Edad']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['UGIntegrad'] !== null ? autolinker.link(String(feature.properties['UGIntegrad']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['Comentario'] !== null ? autolinker.link(String(feature.properties['Comentario']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['Afinidad'] !== null ? autolinker.link(String(feature.properties['Afinidad']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                </table>';
-            var content = removeEmptyRowsFromPopupContent(popupContent, feature);
-			layer.on('popupopen', function(e) {
-				addClassToPopupIfMedia(content, e.popup);
-			});
-			layer.bindPopup(content, { maxHeight: 400 });
-        }
-
-        function style_Geologia_107cpg_2_0(feature) {
-            switch(String(feature.properties['SimboloUC'])) {
-                case 'J-Pi':
-                    return {
-                pane: 'pane_Geologia_107cpg_2',
-                opacity: 1,
-                color: 'rgba(35,35,35,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(71,36,226,1.0)',
-                interactive: false,
-            }
-                    break;
-                case 'J1J2-VCct':
-                    return {
-                pane: 'pane_Geologia_107cpg_2',
-                opacity: 1,
-                color: 'rgba(35,35,35,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(107,238,197,1.0)',
-                interactive: false,
-            }
-                    break;
-                case 'K1-Sm':
-                    return {
-                pane: 'pane_Geologia_107cpg_2',
-                opacity: 1,
-                color: 'rgba(35,35,35,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(85,162,220,1.0)',
-                interactive: false,
-            }
-                    break;
-                case 'MP3NP1-Mag':
-                    return {
-                pane: 'pane_Geologia_107cpg_2',
-                opacity: 1,
-                color: 'rgba(35,35,35,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(231,54,240,1.0)',
-                interactive: false,
-            }
-                    break;
-                case 'n4n6-Sc':
-                    return {
-                pane: 'pane_Geologia_107cpg_2',
-                opacity: 1,
-                color: 'rgba(35,35,35,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(214,117,146,1.0)',
-                interactive: false,
-            }
-                    break;
-                case 'Q-al':
-                    return {
-                pane: 'pane_Geologia_107cpg_2',
-                opacity: 1,
-                color: 'rgba(35,35,35,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(201,228,94,1.0)',
-                interactive: false,
-            }
-                    break;
-                case 'T-Mbg':
-                    return {
-                pane: 'pane_Geologia_107cpg_2',
-                opacity: 1,
-                color: 'rgba(35,35,35,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(236,160,97,1.0)',
-                interactive: false,
-            }
-                    break;
-                default:
-                    return {
-                pane: 'pane_Geologia_107cpg_2',
-                opacity: 1,
-                color: 'rgba(35,35,35,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(61,203,53,1.0)',
-                interactive: false,
-            }
-                    break;
-            }
-        }
-        map.createPane('pane_Geologia_107cpg_2');
-        map.getPane('pane_Geologia_107cpg_2').style.zIndex = 402;
-        map.getPane('pane_Geologia_107cpg_2').style['mix-blend-mode'] = 'normal';
-        var layer_Geologia_107cpg_2 = new L.geoJson(json_Geologia_107cpg_2, {
-            attribution: '',
-            interactive: false,
-            dataVar: 'json_Geologia_107cpg_2',
-            layerName: 'layer_Geologia_107cpg_2',
-            pane: 'pane_Geologia_107cpg_2',
-            onEachFeature: pop_Geologia_107cpg_2,
-            style: style_Geologia_107cpg_2_0,
-        });
-        bounds_group.addLayer(layer_Geologia_107cpg_2);
-        map.addLayer(layer_Geologia_107cpg_2);
-        function pop_Fallas107_3(feature, layer) {
+        function pop_Fallas107_2(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     if (typeof layer.closePopup == 'function') {
@@ -419,11 +229,11 @@
 			layer.bindPopup(content, { maxHeight: 400 });
         }
 
-        function style_Fallas107_3_0(feature) {
+        function style_Fallas107_2_0(feature) {
             switch(String(feature.properties['Tipo'])) {
                 case 'Falla':
                     return {
-                pane: 'pane_Fallas107_3',
+                pane: 'pane_Fallas107_2',
                 opacity: 1,
                 color: 'rgba(0,0,0,1.0)',
                 dashArray: '',
@@ -436,25 +246,25 @@
                     break;
                 case 'Falla de rumbo dextral':
                     return {
-                pane: 'pane_Fallas107_3',
+                pane: 'pane_Fallas107_2',
                 interactive: false,
             }
                     break;
                 case 'Falla de rumbo dextral cubierta':
                     return {
-                pane: 'pane_Fallas107_3',
+                pane: 'pane_Fallas107_2',
                 interactive: false,
             }
                     break;
                 case 'Falla de rumbo sinestral':
                     return {
-                pane: 'pane_Fallas107_3',
+                pane: 'pane_Fallas107_2',
                 interactive: false,
             }
                     break;
                 case 'Falla inversa o de cabalgamiento':
                     return {
-                pane: 'pane_Fallas107_3',
+                pane: 'pane_Fallas107_2',
                 opacity: 1,
                 color: 'rgba(0,0,0,1.0)',
                 dashArray: '',
@@ -467,21 +277,21 @@
                     break;
             }
         }
-        map.createPane('pane_Fallas107_3');
-        map.getPane('pane_Fallas107_3').style.zIndex = 403;
-        map.getPane('pane_Fallas107_3').style['mix-blend-mode'] = 'normal';
-        var layer_Fallas107_3 = new L.geoJson(json_Fallas107_3, {
+        map.createPane('pane_Fallas107_2');
+        map.getPane('pane_Fallas107_2').style.zIndex = 402;
+        map.getPane('pane_Fallas107_2').style['mix-blend-mode'] = 'normal';
+        var layer_Fallas107_2 = new L.geoJson(json_Fallas107_2, {
             attribution: '',
             interactive: false,
-            dataVar: 'json_Fallas107_3',
-            layerName: 'layer_Fallas107_3',
-            pane: 'pane_Fallas107_3',
-            onEachFeature: pop_Fallas107_3,
-            style: style_Fallas107_3_0,
+            dataVar: 'json_Fallas107_2',
+            layerName: 'layer_Fallas107_2',
+            pane: 'pane_Fallas107_2',
+            onEachFeature: pop_Fallas107_2,
+            style: style_Fallas107_2_0,
         });
-        bounds_group.addLayer(layer_Fallas107_3);
-        map.addLayer(layer_Fallas107_3);
-        function pop_Datos_Estructurales107_4(feature, layer) {
+        bounds_group.addLayer(layer_Fallas107_2);
+        map.addLayer(layer_Fallas107_2);
+        function pop_Datos_Estructurales107_3(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     if (typeof layer.closePopup == 'function') {
@@ -551,9 +361,9 @@
 			layer.bindPopup(content, { maxHeight: 400 });
         }
 
-        function style_Datos_Estructurales107_4_0() {
+        function style_Datos_Estructurales107_3_0() {
             return {
-                pane: 'pane_Datos_Estructurales107_4',
+                pane: 'pane_Datos_Estructurales107_3',
                 radius: 10.0,
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
@@ -567,9 +377,9 @@
                 interactive: false,
             }
         }
-        function style_Datos_Estructurales107_4_1() {
+        function style_Datos_Estructurales107_3_1() {
             return {
-                pane: 'pane_Datos_Estructurales107_4',
+                pane: 'pane_Datos_Estructurales107_3',
                 radius: 4.8,
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
@@ -583,36 +393,97 @@
                 interactive: false,
             }
         }
-        map.createPane('pane_Datos_Estructurales107_4');
-        map.getPane('pane_Datos_Estructurales107_4').style.zIndex = 404;
-        map.getPane('pane_Datos_Estructurales107_4').style['mix-blend-mode'] = 'normal';
-        var layer_Datos_Estructurales107_4 = new L.geoJson.multiStyle(json_Datos_Estructurales107_4, {
+        map.createPane('pane_Datos_Estructurales107_3');
+        map.getPane('pane_Datos_Estructurales107_3').style.zIndex = 403;
+        map.getPane('pane_Datos_Estructurales107_3').style['mix-blend-mode'] = 'normal';
+        var layer_Datos_Estructurales107_3 = new L.geoJson.multiStyle(json_Datos_Estructurales107_3, {
             attribution: '',
             interactive: false,
-            dataVar: 'json_Datos_Estructurales107_4',
-            layerName: 'layer_Datos_Estructurales107_4',
-            pane: 'pane_Datos_Estructurales107_4',
-            onEachFeature: pop_Datos_Estructurales107_4,
+            dataVar: 'json_Datos_Estructurales107_3',
+            layerName: 'layer_Datos_Estructurales107_3',
+            pane: 'pane_Datos_Estructurales107_3',
+            onEachFeature: pop_Datos_Estructurales107_3,
             pointToLayers: [function (feature, latlng) {
                 var context = {
                     feature: feature,
                     variables: {}
                 };
-                return L.shapeMarker(latlng, style_Datos_Estructurales107_4_0(feature));
+                return L.shapeMarker(latlng, style_Datos_Estructurales107_3_0(feature));
             },function (feature, latlng) {
                 var context = {
                     feature: feature,
                     variables: {}
                 };
-                return L.shapeMarker(latlng, style_Datos_Estructurales107_4_1(feature));
+                return L.shapeMarker(latlng, style_Datos_Estructurales107_3_1(feature));
             },
         ]});
-        bounds_group.addLayer(layer_Datos_Estructurales107_4);
-        map.addLayer(layer_Datos_Estructurales107_4);
+        bounds_group.addLayer(layer_Datos_Estructurales107_3);
+        map.addLayer(layer_Datos_Estructurales107_3);
+        function pop_Area107_4(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    if (typeof layer.closePopup == 'function') {
+                        layer.closePopup();
+                    } else {
+                        layer.eachLayer(function(feature){
+                            feature.closePopup()
+                        });
+                    }
+                },
+                mouseover: highlightFeature,
+            });
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['PLA_NUMR_P'] !== null ? autolinker.link(String(feature.properties['PLA_NUMR_P']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['RULEID'] !== null ? autolinker.link(String(feature.properties['RULEID']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Shape_Leng'] !== null ? autolinker.link(String(feature.properties['Shape_Leng']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Shape_Area'] !== null ? autolinker.link(String(feature.properties['Shape_Area']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            var content = removeEmptyRowsFromPopupContent(popupContent, feature);
+			layer.on('popupopen', function(e) {
+				addClassToPopupIfMedia(content, e.popup);
+			});
+			layer.bindPopup(content, { maxHeight: 400 });
+        }
+
+        function style_Area107_4_0() {
+            return {
+                pane: 'pane_Area107_4',
+                opacity: 1,
+                color: 'rgba(53,121,177,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 4.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+        }
+        map.createPane('pane_Area107_4');
+        map.getPane('pane_Area107_4').style.zIndex = 404;
+        map.getPane('pane_Area107_4').style['mix-blend-mode'] = 'normal';
+        var layer_Area107_4 = new L.geoJson(json_Area107_4, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Area107_4',
+            layerName: 'layer_Area107_4',
+            pane: 'pane_Area107_4',
+            onEachFeature: pop_Area107_4,
+            style: style_Area107_4_0,
+        });
+        bounds_group.addLayer(layer_Area107_4);
+        map.addLayer(layer_Area107_4);
         var overlaysTree = [
-            {label: '<img src="legend/Datos_Estructurales107_4.png" /> Datos_Estructurales107', layer: layer_Datos_Estructurales107_4},
-            {label: 'Fallas107<br /><table><tr><td style="text-align: center;"><img src="legend/Fallas107_3_Falla0.png" /></td><td>Falla</td></tr><tr><td style="text-align: center;"><img src="legend/Fallas107_3_Falladerumbodextral1.png" /></td><td>Falla de rumbo dextral</td></tr><tr><td style="text-align: center;"><img src="legend/Fallas107_3_Falladerumbodextralcubierta2.png" /></td><td>Falla de rumbo dextral cubierta</td></tr><tr><td style="text-align: center;"><img src="legend/Fallas107_3_Falladerumbosinestral3.png" /></td><td>Falla de rumbo sinestral</td></tr><tr><td style="text-align: center;"><img src="legend/Fallas107_3_Fallainversaodecabalgamiento4.png" /></td><td>Falla inversa o de cabalgamiento</td></tr></table>', layer: layer_Fallas107_3},
-            {label: 'Geologia_107.cpg<br /><table><tr><td style="text-align: center;"><img src="legend/Geologia_107cpg_2_JPi0.png" /></td><td>J-Pi</td></tr><tr><td style="text-align: center;"><img src="legend/Geologia_107cpg_2_J1J2VCct1.png" /></td><td>J1J2-VCct</td></tr><tr><td style="text-align: center;"><img src="legend/Geologia_107cpg_2_K1Sm2.png" /></td><td>K1-Sm</td></tr><tr><td style="text-align: center;"><img src="legend/Geologia_107cpg_2_MP3NP1Mag3.png" /></td><td>MP3NP1-Mag</td></tr><tr><td style="text-align: center;"><img src="legend/Geologia_107cpg_2_n4n6Sc4.png" /></td><td>n4n6-Sc</td></tr><tr><td style="text-align: center;"><img src="legend/Geologia_107cpg_2_Qal5.png" /></td><td>Q-al</td></tr><tr><td style="text-align: center;"><img src="legend/Geologia_107cpg_2_TMbg6.png" /></td><td>T-Mbg</td></tr><tr><td style="text-align: center;"><img src="legend/Geologia_107cpg_2_7.png" /></td><td></td></tr></table>', layer: layer_Geologia_107cpg_2},
+            {label: '<img src="legend/Area107_4.png" /> Area 107', layer: layer_Area107_4},
+            {label: '<img src="legend/Datos_Estructurales107_3.png" /> Datos_Estructurales107', layer: layer_Datos_Estructurales107_3},
+            {label: 'Fallas107<br /><table><tr><td style="text-align: center;"><img src="legend/Fallas107_2_Falla0.png" /></td><td>Falla</td></tr><tr><td style="text-align: center;"><img src="legend/Fallas107_2_Falladerumbodextral1.png" /></td><td>Falla de rumbo dextral</td></tr><tr><td style="text-align: center;"><img src="legend/Fallas107_2_Falladerumbodextralcubierta2.png" /></td><td>Falla de rumbo dextral cubierta</td></tr><tr><td style="text-align: center;"><img src="legend/Fallas107_2_Falladerumbosinestral3.png" /></td><td>Falla de rumbo sinestral</td></tr><tr><td style="text-align: center;"><img src="legend/Fallas107_2_Fallainversaodecabalgamiento4.png" /></td><td>Falla inversa o de cabalgamiento</td></tr></table>', layer: layer_Fallas107_2},
             {label: "Suceptivilidad_Movimientos_en_Masa", layer: layer_Suceptivilidad_Movimientos_en_Masa_1},
             {label: "World Topo Map", layer: layer_WorldTopoMap_0},]
         var lay = L.control.layers.tree(null, overlaysTree,{
@@ -631,15 +502,15 @@
                 return this._bounds;
             }
         });
-        resetLabels([layer_Datos_Estructurales107_4]);
+        resetLabels([layer_Datos_Estructurales107_3]);
         map.on("zoomend", function(){
-            resetLabels([layer_Datos_Estructurales107_4]);
+            resetLabels([layer_Datos_Estructurales107_3]);
         });
         map.on("layeradd", function(){
-            resetLabels([layer_Datos_Estructurales107_4]);
+            resetLabels([layer_Datos_Estructurales107_3]);
         });
         map.on("layerremove", function(){
-            resetLabels([layer_Datos_Estructurales107_4]);
+            resetLabels([layer_Datos_Estructurales107_3]);
         });
         </script>        
     </body>
